@@ -1,0 +1,15 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-box {
+    width: 30%;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0.5rem auto;
+}
