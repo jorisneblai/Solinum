@@ -1,9 +1,10 @@
-import { AppBar, CssBaseline, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
+import { AppBar, CssBaseline, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import MapIcon from '@mui/icons-material/Map';
 import { Box } from '@mui/system';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -40,14 +41,14 @@ const NavBar = () => {
                         <ListItemIcon>
                             <CreateIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Formulaire de contribution" />
+                        <ListItemText primary="Formulaire de contribution" as={NavLink} to="/" />
                     </ListItemButton>
                     <Divider />
                     <ListItemButton>
                         <ListItemIcon>
                             <FormatListBulletedIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Point d'intérêt géolocalisés" />
+                        <ListItemText primary="Point d'intérêt géolocalisés" as={NavLink} to="/poilist"/>
                     </ListItemButton>
                     <Divider />
                     <ListItemButton>

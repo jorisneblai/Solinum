@@ -1,9 +1,13 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 
 import './Form.css';
-import { Button } from '@mui/material';
 
 const Form = (props) => {
     return (
@@ -34,6 +38,12 @@ const Form = (props) => {
                         size="small"
                     />
                     <TextField
+                        label="E-Mail"
+                        id="email"
+                        type="email"
+                        size="small"
+                    />
+                    <TextField
                         label="N°"
                         id="street_number"
                         size="small"
@@ -53,8 +63,23 @@ const Form = (props) => {
                         id="city"
                         size="small"
                     />
+                    <FormControl fullWidth>
+                        <InputLabel id="select-type">Type</InputLabel>
+                        <Select
+                            labelId="select-type"
+                            id="simple-select"
+
+                            label="Type"
+
+                        >
+                            <MenuItem value="distribution">Distribution</MenuItem>
+                            <MenuItem value="douche">Douche</MenuItem>
+                            <MenuItem value="wifi">Wi-Fi</MenuItem>
+                        </Select>
+                    </FormControl>
 
                 <Button
+                    type="submit"
                     variant="contained"
                 >
                     Ajouter
