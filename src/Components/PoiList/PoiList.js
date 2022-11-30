@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 
-const columns = [
+const categories = [
   { field: 'id', headerName: 'ID', width: 200 },
   {
     field: 'name',
@@ -25,7 +25,7 @@ const columns = [
 
 ];
 
-const rows = [
+const contributions = [
   { id: 1, name: 'Emmaüs Beauté & Bien-être 10ème', address: '179 Quai de Valmy, 75010 Paris', type: 'douche' },
   { id: 2, name: 'Bains-douches Meaux', address: '18 Rue de Meaux, 75019 Paris', type: 'douche' },
   { id: 3, name: 'Entraide et partage avec les sans-logis (EPALSL)', address: '22 rue Sainte-Marthe, 75010 Paris', type: 'douche' },
@@ -38,8 +38,8 @@ const PoiList = () => {
   return (
     <Box sx={{ height: 800, width: '50%', margin: 40}}>
       <DataGrid
-        rows={rows}
-        columns={columns}
+        rows={contributions}
+        columns={categories}
         pageSize={10}
         rowsPerPageOptions={[10]}
         checkboxSelection
