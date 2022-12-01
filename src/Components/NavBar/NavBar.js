@@ -50,7 +50,7 @@ const NavBar = (props) => {
                         <ListItemText primary="Point d'intérêt géolocalisés"/>
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton>
+                    <ListItemButton onClick={() => props.onTabChange(3)}>
                         <ListItemIcon>
                             <MapIcon />
                         </ListItemIcon>

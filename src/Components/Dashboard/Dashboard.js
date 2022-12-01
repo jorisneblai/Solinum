@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from '../Form/Form';
 import PoiList from '../PoiList/PoiList';
 import NavBar from '../NavBar/NavBar';
+import Map from '../Map/Map';
 
 // This is an array of data seeding helping me to have few datas in my DataGrid
 const CONTRIBUTIONS_SEED = [
@@ -94,7 +95,10 @@ const Dashboard = () => {
                         onInformationNeeded={addInformationNeededStatus}
                     />
                 )
-            : 
+            : tab === 3 ? (
+                    <Map />
+                )
+            :
                 <></>
             }
         </main>
