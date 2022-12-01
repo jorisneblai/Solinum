@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import { DataGrid } from '@mui/x-data-grid';
 
 const categories = [
@@ -7,46 +8,106 @@ const categories = [
   {
     field: 'name',
     headerName: 'Nom',
-    width: 150,
+    width: 300,
+    editable: true,
   },
   {
-    field: 'address',
-    headerName: 'Adresse',
-    width: 150,
-    sortable: false
+    field: 'number',
+    headerName: 'N°',
+    width: 300,
+    sortable: false,
+    editable: true,
+  },
+  {
+    field: 'street',
+    headerName: 'Rue',
+    width: 300,
+    sortable: false,
+    editable: true,
+  },
+  {
+    field: 'zip',
+    headerName: 'Code Postal',
+    width: 300,
+    sortable: false,
+    editable: true,
+  },
+  {
+    field: 'city',
+    headerName: 'Ville',
+    width: 300,
+    sortable: false,
+    editable: true,
+  },
+  {
+    field: 'lat',
+    headerName: 'Latitude',
+    width: 300,
+    sortable: false,
+    editable: true,
+  },
+  {
+    field: 'lng',
+    headerName: 'Longitude',
+    width: 300,
+    sortable: false,
+    editable: true,
   },
   {
     field: 'type',
     headerName: 'Type de POI',
-    width: 110,
+    width: 300,
+    sortable: false,
     editable: true,
+  },
+  {
+    field: 'status',
+    headerName: 'Statut',
+    width: 300,
     sortable: true
   },
-
+  {
+    field: 'state',
+    headerName: 'État',
+    width: 300,
+    sortable: true
+  },
 ];
 
-const contributions = [
-  { id: 1, name: 'Emmaüs Beauté & Bien-être 10ème', address: '179 Quai de Valmy, 75010 Paris', type: 'douche' },
-  { id: 2, name: 'Bains-douches Meaux', address: '18 Rue de Meaux, 75019 Paris', type: 'douche' },
-  { id: 3, name: 'Entraide et partage avec les sans-logis (EPALSL)', address: '22 rue Sainte-Marthe, 75010 Paris', type: 'douche' },
-  { id: 4, name: 'Paris WiFi 1605', address: 'Place du 11-Novembre-1918, 75010 Paris', type: 'Wi-Fi' },
-  { id: 5, name: 'ESI La Halle Saint-Didier', address: '23 Rue Mesnil, 75116 Paris', type: 'Wi-Fi' },
-  { id: 6, name: 'Itinérances', address: '61 Boulevard de Magenta', type: 'distribution' },
-];
 
-const PoiList = () => {
+const PoiList = (props) => {
   return (
-    <Box sx={{ height: 800, width: '50%', margin: 40}}>
-      <DataGrid
-        rows={contributions}
-        columns={categories}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        checkboxSelection
-        disableSelectionOnClick
-        experimentalFeatures={{ newEditingApi: true }}
-      />
-    </Box>
+    <>
+      <Box sx={{ height: 500, margin: 0}}>
+        <DataGrid
+          rows={props.contributions}
+          columns={categories}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+          checkboxSelection
+          disableSelectionOnClick
+          experimentalFeatures={{ newEditingApi: true }}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRowData = props.contributions.filter((contribution) =>
+              selectedIDs.has(contribution.id)
+            );
+            props.onSelect(selectedRowData);
+          }}
+          initialState={{
+            sorting: {
+              sortModel: [{ field: 'status', sort: 'desc' }],
+            },
+          }}
+        />
+      </Box>
+      { props.isModerationOn &&
+        <>
+          <Button onClick={props.onToggleStatus}>TOGGLE STATUS</Button>
+          <Button onClick={props.onInformationNeeded}>NEED INFORMATION</Button>
+        </>
+      }
+    </>
   );
 };
 
