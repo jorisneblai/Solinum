@@ -74,7 +74,7 @@ const categories = [
   },
 ];
 
-
+// Integration of a data grid to display the datas in a more readable way.
 const PoiList = (props) => {
   return (
     <>
@@ -87,6 +87,7 @@ const PoiList = (props) => {
           checkboxSelection
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
+          // Creation of a unique ID for the new datas submitted by the form.
           onSelectionModelChange={(ids) => {
             const selectedIDs = new Set(ids);
             const selectedRowData = props.contributions.filter((contribution) =>
@@ -98,11 +99,12 @@ const PoiList = (props) => {
             sorting: {
               sortModel: [{ field: 'status', sort: 'desc' }],
             },
-          }}
+          }} 
         />
       </Box>
+      {/* Displaying these two buttons when isModerationOn is called */}
       { props.isModerationOn &&
-        <>
+        <> 
           <Button onClick={props.onToggleStatus}>TOGGLE STATUS</Button>
           <Button onClick={props.onInformationNeeded}>NEED INFORMATION</Button>
         </>

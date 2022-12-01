@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 
 import './Form.css';
 
+// This function setup a form with a State to send new datas submitted in the Dashboard main function.
 const Form = (props) => {
     const [name, setName] = useState(props.contribution && props.contribution.name);
     const [email, setEmail] = useState(props.contribution && props.contribution.email);
@@ -18,7 +19,7 @@ const Form = (props) => {
     const [city, setCity] = useState(props.contribution && props.contribution.city);
     const [type, setType] = useState((props.contribution && props.contribution.type) || "");
 
-
+    // When the form is submitted adding a new object in the array with all the new key/values entered in the different inputs.
     const onSubmit = (e) => {
         e.preventDefault();
         const dataContrib = {
