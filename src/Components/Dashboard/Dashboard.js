@@ -18,6 +18,7 @@ const Dashboard = () => {
     const [contributions, setContributions] = useState(CONTRIBUTIONS_SEED);
     const [showModeration, setShowModeration] = useState(false);
     const [selectedContributions, setSelectedContributions] = useState([]);
+    const [tab, setTab] = useState(1);
 
     // This function get all the datas submitted by the form and also get the exact latitude and longitude with the help of Google Geocoding.
     const onFormSubmit = (newContrib) => {
@@ -31,6 +32,11 @@ const Dashboard = () => {
             });
         
         setContributions([...CONTRIBUTIONS_SEED, newContrib])
+    }
+
+    const handleTabs = (tabNumber) => {
+        console.log(tabNumber)
+        setTab(tabNumber);
     }
 
     // This function is called when one or several contributions is selected and then, display two buttons to change the status or asking for more informations about the contribution.
@@ -73,17 +79,24 @@ const Dashboard = () => {
 
     return (
         <main className="dashboard">
-            <NavBar />
-            <Form 
-                handleSubmit={onFormSubmit} 
-            />
-            <PoiList 
-                contributions={contributions} 
-                onSelect={onContributionSelect} 
-                isModerationOn={showModeration} 
-                onToggleStatus={toggleContributionStatus}
-                onInformationNeeded={addInformationNeededStatus}
-            />
+            <NavBar onTabChange={handleTabs} />
+            { tab === 1 ? (
+                    <Form 
+                        handleSubmit={onFormSubmit} 
+                    />
+                )
+            : tab === 2 ? (
+                    <PoiList 
+                        contributions={contributions} 
+                        onSelect={onContributionSelect} 
+                        isModerationOn={showModeration} 
+                        onToggleStatus={toggleContributionStatus}
+                        onInformationNeeded={addInformationNeededStatus}
+                    />
+                )
+            : 
+                <></>
+            }
         </main>
     )
 }

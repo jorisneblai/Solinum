@@ -4,11 +4,10 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import MapIcon from '@mui/icons-material/Map';
 import { Box } from '@mui/system';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -37,18 +36,18 @@ const NavBar = () => {
                 <Toolbar />
                 <Divider />
                 <List>
-                    <ListItemButton>
+                    <ListItemButton onClick={() => props.onTabChange(1)}>
                         <ListItemIcon>
                             <CreateIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Formulaire de contribution" as={NavLink} to="/" />
+                        <ListItemText primary="Formulaire de contribution"/>
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton>
+                    <ListItemButton onClick={() => props.onTabChange(2)}>
                         <ListItemIcon>
                             <FormatListBulletedIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Point d'intérêt géolocalisés" as={NavLink} to="/poilist"/>
+                        <ListItemText primary="Point d'intérêt géolocalisés"/>
                     </ListItemButton>
                     <Divider />
                     <ListItemButton>

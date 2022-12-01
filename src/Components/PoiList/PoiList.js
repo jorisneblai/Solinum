@@ -74,8 +74,8 @@ const PoiList = (props) => {
         Liste des points d'intérêts géolocalisés (POI)
       </Divider>
       <Container width='75%'>
-        <Box sx={{ bgcolor: '#cfe8fc', height: '30px', borderRadius: 5 }}>
-          <p className="info-txt">Afin de faire des modifications, effectuez un double-clique sur la donnée à modifier.</p>
+        <Box sx={{ bgcolor: '#cfe8fc', height: '30px', borderRadius: 5, margin: '10px' }}>
+          <p className="info-txt">Pour faire une modification de donnée, double-cliquez sur celle-ci.</p>
         </Box>
       </Container>
       <Box sx={{ height: 500, margin: 10}}>

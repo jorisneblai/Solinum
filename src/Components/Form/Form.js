@@ -20,6 +20,17 @@ const Form = (props) => {
     const [city, setCity] = useState(props.contribution && props.contribution.city);
     const [type, setType] = useState((props.contribution && props.contribution.type) || "");
 
+    // This function helps to clear all the inputs when the form is submitted.
+    const clearInputs = () => {
+        setName("");
+        setEmail("");
+        setNumber("");
+        setStreet("");
+        setZip("");
+        setCity("");
+        setType("");
+    }
+
     // When the form is submitted adding a new object in the array with all the new key/values entered in the different inputs.
     const onSubmit = (e) => {
         e.preventDefault();
@@ -35,6 +46,7 @@ const Form = (props) => {
         }
 
         props.handleSubmit(dataContrib);
+        clearInputs();
     }
 
     return (
@@ -92,7 +104,7 @@ const Form = (props) => {
                             size="small"
                             sx={{
                                 ".MuiInputBase-input": {
-                                    width: '38ch',
+                                    width: '75ch',
                                 }
                             }}
                             value={street}
