@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from '../Form/Form';
 import PoiList from '../PoiList/PoiList';
+import NavBar from '../NavBar/NavBar';
 
 // This is an array of data seeding helping me to have few datas in my DataGrid
 const CONTRIBUTIONS_SEED = [
@@ -72,6 +73,7 @@ const Dashboard = () => {
 
     return (
         <main className="dashboard">
+            <NavBar />
             <Form 
                 handleSubmit={onFormSubmit} 
             />

@@ -6,6 +6,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import Divider from '@mui/material/Divider';
 
 import './Form.css';
 
@@ -38,19 +39,18 @@ const Form = (props) => {
 
     return (
         <div className="form">
-            <h2 className="form-header">
-                Formulaire de contribution de points d'intérêt géolocalisé (POI)
-            </h2>
-            <p className="form-header-paragraph">
-                Ajouter un point d'intérêt géolocalisé (distribution, douche, Wi-Fi)
-            </p>
+            <Divider 
+                textAlign="left"
+            >
+                Formulaire de contribution de points d'intérêts géolocalisés (POI)
+            </Divider>
             <Box
                 component="form"
+                textAlign="left"
                 sx={{
                     '& .MuiTextField-root': {
                         m: 1,
                         display: 'flex',
-
                     },
                 }}
                 onSubmit={onSubmit}
@@ -71,20 +71,34 @@ const Form = (props) => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <TextField
-                        label="N°"
-                        id="street_number"
-                        size="small"
-                        value={number}
-                        onChange={(e) => setNumber(e.target.value)}
-                    />
-                    <TextField
-                        label="Route"
-                        id="route"
-                        size="small"
-                        value={street}
-                        onChange={(e) => setStreet(e.target.value)}
-                    />
+                    <Box
+                        sx={{ display: "flex" }}
+                    >
+                        <TextField
+                            label="N°"
+                            id="street_number"
+                            size="small"
+                            sx={{
+                                ".MuiInputBase-input": {
+                                    width: '5ch',
+                                }
+                            }}
+                            value={number}
+                            onChange={(e) => setNumber(e.target.value)}
+                        />
+                        <TextField
+                            label="Route"
+                            id="route"
+                            size="small"
+                            sx={{
+                                ".MuiInputBase-input": {
+                                    width: '38ch',
+                                }
+                            }}
+                            value={street}
+                            onChange={(e) => setStreet(e.target.value)}
+                        />
+                    </Box>
                     <TextField
                         label="Code Postal"
                         id="zip_code"
@@ -99,7 +113,8 @@ const Form = (props) => {
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                     />
-                    <FormControl fullWidth>
+                    <Divider variant="middle" />
+                    <FormControl sx={{ m: 1, width: 272 }} size="small">
                         <InputLabel id="select-type">Type</InputLabel>
                         <Select
                             labelId="select-type"
@@ -118,6 +133,7 @@ const Form = (props) => {
                 <Button
                     type="submit"
                     variant="contained"
+                    className="form-btn"
                     onClick={(e) => onSubmit(e)}
                 >
                     Ajouter

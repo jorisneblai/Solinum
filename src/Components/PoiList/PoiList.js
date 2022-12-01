@@ -1,7 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import { DataGrid } from '@mui/x-data-grid';
+
+import './PoiList.css';
 
 const categories = [
   { field: 'id', headerName: 'ID', width: 200 },
@@ -14,62 +18,48 @@ const categories = [
   {
     field: 'number',
     headerName: 'N°',
-    width: 300,
+    width: 10,
     sortable: false,
     editable: true,
   },
   {
     field: 'street',
     headerName: 'Rue',
-    width: 300,
+    width: 250,
     sortable: false,
     editable: true,
   },
   {
     field: 'zip',
     headerName: 'Code Postal',
-    width: 300,
+    width: 100,
     sortable: false,
     editable: true,
   },
   {
     field: 'city',
     headerName: 'Ville',
-    width: 300,
-    sortable: false,
-    editable: true,
-  },
-  {
-    field: 'lat',
-    headerName: 'Latitude',
-    width: 300,
-    sortable: false,
-    editable: true,
-  },
-  {
-    field: 'lng',
-    headerName: 'Longitude',
-    width: 300,
+    width: 90,
     sortable: false,
     editable: true,
   },
   {
     field: 'type',
     headerName: 'Type de POI',
-    width: 300,
+    width: 100,
     sortable: false,
     editable: true,
   },
   {
     field: 'status',
     headerName: 'Statut',
-    width: 300,
+    width: 150,
     sortable: true
   },
   {
     field: 'state',
     headerName: 'État',
-    width: 300,
+    width: 100,
     sortable: true
   },
 ];
@@ -77,8 +67,18 @@ const categories = [
 // Integration of a data grid to display the datas in a more readable way.
 const PoiList = (props) => {
   return (
-    <>
-      <Box sx={{ height: 500, margin: 0}}>
+    <div className="grid-data">
+      <Divider
+        textAlign="left"
+      >
+        Liste des points d'intérêts géolocalisés (POI)
+      </Divider>
+      <Container width='75%'>
+        <Box sx={{ bgcolor: '#cfe8fc', height: '30px', borderRadius: 5 }}>
+          <p className="info-txt">Afin de faire des modifications, effectuez un double-clique sur la donnée à modifier.</p>
+        </Box>
+      </Container>
+      <Box sx={{ height: 500, margin: 10}}>
         <DataGrid
           rows={props.contributions}
           columns={categories}
@@ -104,12 +104,28 @@ const PoiList = (props) => {
       </Box>
       {/* Displaying these two buttons when isModerationOn is called */}
       { props.isModerationOn &&
-        <> 
-          <Button onClick={props.onToggleStatus}>TOGGLE STATUS</Button>
-          <Button onClick={props.onInformationNeeded}>NEED INFORMATION</Button>
-        </>
+        <div className="onClick-btn"> 
+          <Button
+            variant="outlined" 
+            sx={{
+              marginTop: 0,
+              marginBottom: 0,
+              marginLeft: 5,
+              marginRight: 5,
+            }}
+            onClick={props.onToggleStatus}
+          >
+            Changer le statut
+          </Button>
+          <Button 
+            variant="outlined" 
+            onClick={props.onInformationNeeded}
+          >
+            Besoin d'informations
+          </Button>
+        </div>
       }
-    </>
+    </div>
   );
 };
 
