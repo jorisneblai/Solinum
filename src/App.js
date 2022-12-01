@@ -1,17 +1,12 @@
 import './App.css';
 import './reset.css';
-import Form from './Components/Form/Form';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <div className="header-top-block">
-          <h1 className="header-top-block_title">
-            solinum
-          </h1>
-      </div>
-      <Form />
-    </div>
+    <main className="App">
+      <Dashboard />
+    </main>
   );
 }
 
