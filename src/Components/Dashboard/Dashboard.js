@@ -23,9 +23,10 @@ const Dashboard = () => {
 
     // This function get all the datas submitted by the form and also get the exact latitude and longitude with the help of Google Geocoding.
     const onFormSubmit = (newContrib) => {
+        const API_KEY = process.env.API_KEY;
         newContrib.id = (contributions[contributions.length -1].id) + 1;
         let encodedAddress = encodeURIComponent(`${newContrib.number} ${newContrib.street} ${newContrib.zip} ${newContrib.city}`)
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAkiSxJt9c0ArgJqVd77DG8sjWho8ydRlU`)
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${API_KEY}`)
             .then((response) => response.json())
             .then((data) => {
                 newContrib.lat = data.results[0].geometry.location.lat; 
